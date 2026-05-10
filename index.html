@@ -79,7 +79,10 @@ body{
     box-shadow:
     0 15px 40px rgba(0,0,0,0.4),
     0 0 40px rgba(255,255,255,0.15);
-    overflow:visible;
+
+    /* FIXED */
+    overflow:hidden;
+
     transition:0.4s;
 }
 
@@ -150,8 +153,10 @@ body{
 }
 
 .envelope.open .letter{
+
+    /* FIXED */
     opacity:1;
-    transform:translateY(-60px);
+    transform:translateY(-25px);
 }
 
 /* BUTTON */
