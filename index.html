@@ -1,1 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To My Mother 💜</title>
 
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to bottom,#240046,#5a189a,#9d4edd);
+    font-family:Georgia, serif;
+}
+
+/* FLOWERS */
+
+.flower{
+    position:absolute;
+    font-size:40px;
+    animation:float 12s linear infinite;
+    opacity:0.8;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) rotate(0deg);
+    }
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+    }
+}
+
+/* ENVELOPE */
+
+.envelope{
+    position:relative;
+    width:320px;
+    height:220px;
+    background:#c77dff;
+    border-radius:12px;
+    cursor:pointer;
+    box-shadow:0 10px 35px rgba(0,0,0,0.4);
+    transition:0.5s;
+}
+
+.envelope:hover{
+    transform:scale(1.03);
+}
+
+/* TOP FLAP */
+
+.flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#9d4edd;
+    clip-path:polygon(0 0, 50% 55%, 100% 0);
+    transform-origin:top;
+    transition:1s;
+    z-index:3;
+}
+
+/* LETTER */
+
+.letter{
+    position:absolute;
+    width:90%;
+    height:90%;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    left:5%;
+    top:5%;
+    border-radius:18px;
+    padding:25px;
+    color:white;
+    overflow-y:auto;
+    transform:translateY(40px);
+    transition:1s;
+    opacity:0;
+    box-shadow:0 0 25px rgba(255,255,255,0.15);
+}
+
+.letter h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:#ffd6ff;
+}
+
+.letter p{
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* OPEN EFFECT */
+
+.envelope.open .flap{
+    transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+    transform:translateY(-120px);
+    opacity:1;
+}
+
+/* BUTTON */
+
+.open-btn{
+    position:absolute;
+    bottom:-70px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:12px 28px;
+    border:none;
+    border-radius:40px;
+    background:#e0aaff;
+    color:#240046;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.open-btn:hover{
+    background:white;
+}
+
+/* SPARKLES */
+
+.sparkle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:0.2;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FLOWERS -->
+
+<div class="flower" style="left:5%; animation-duration:10s;">💐</div>
+<div class="flower" style="left:18%; animation-duration:13s;">🌸</div>
+<div class="flower" style="left:35%; animation-duration:9s;">🌺</div>
+<div class="flower" style="left:50%; animation-duration:15s;">💮</div>
+<div class="flower" style="left:70%; animation-duration:12s;">🌷</div>
+<div class="flower" style="left:90%; animation-duration:11s;">💐</div>
+
+<!-- SPARKLES -->
+
+<div class="sparkle" style="top:10%; left:20%;"></div>
+<div class="sparkle" style="top:25%; left:70%;"></div>
+<div class="sparkle" style="top:75%; left:40%;"></div>
+<div class="sparkle" style="top:60%; left:90%;"></div>
+
+<!-- ENVELOPE -->
+
+<div class="envelope" id="envelope">
+
+    <div class="flap"></div>
+
+    <div class="letter">
+
+        <h1>To My Mother 💜</h1>
+
+        <p>
+        HAPPYY MOTHER’S DAY MA!! 🥹
+        <br><br>
+
+        I hope you are doing great even though you’re having troubles with us sometimes 😅
+        <br><br>
+
+        I hope that even with all your problems in life, you’ll keep going until we become successful in life, just like you.
+        <br><br>
+
+        Both me and Kyang2x won’t disappoint you with our academics, and we’ll strive to give you the best that we could.
+        <br><br>
+
+        Please accept that as our payment for your hard work for us because we will make sure that sooner or later, we’ll be the ones to help you.
+        <br><br>
+
+        That’s all, THANKYOUU 🥹
+        </p>
+
+    </div>
+
+    <button class="open-btn" onclick="openLetter()">
+        Open Letter 💌
+    </button>
+
+</div>
+
+<script>
+
+function openLetter(){
+    document
+    .getElementById("envelope")
+    .classList.toggle("open");
+}
+
+</script>
+
+</body>
+</html>
