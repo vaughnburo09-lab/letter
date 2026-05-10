@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,8 +19,30 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(to bottom,#240046,#5a189a,#9d4edd);
+    background:
+    radial-gradient(circle at top,#7b2cbf,#5a189a,#240046);
     font-family:Georgia, serif;
+}
+
+/* GLOW BACKGROUND */
+
+.glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(255,255,255,0.08);
+    filter:blur(120px);
+    border-radius:50%;
+    animation:pulse 4s infinite alternate;
+}
+
+@keyframes pulse{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.15);
+    }
 }
 
 /* FLOWERS */
@@ -47,15 +69,41 @@ body{
     position:relative;
     width:320px;
     height:220px;
-    background:#c77dff;
-    border-radius:12px;
+    background:linear-gradient(
+    to bottom,
+    #d291ff,
+    #c77dff);
+    border-radius:18px;
     cursor:pointer;
-    box-shadow:0 10px 35px rgba(0,0,0,0.4);
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.4),
+    0 0 30px rgba(255,255,255,0.1);
     transition:0.5s;
 }
 
 .envelope:hover{
     transform:scale(1.03);
+}
+
+/* ENVELOPE SHINE */
+
+.envelope::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent);
+    transition:1s;
+}
+
+.envelope:hover::before{
+    left:100%;
 }
 
 /* TOP FLAP */
@@ -64,7 +112,10 @@ body{
     position:absolute;
     width:100%;
     height:100%;
-    background:#9d4edd;
+    background:linear-gradient(
+    to bottom,
+    #b15cff,
+    #9d4edd);
     clip-path:polygon(0 0, 50% 55%, 100% 0);
     transform-origin:top;
     transition:1s;
@@ -78,10 +129,10 @@ body{
     width:90%;
     height:90%;
     background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(15px);
     left:5%;
     top:5%;
-    border-radius:18px;
+    border-radius:20px;
     padding:25px;
     color:white;
     overflow-y:auto;
@@ -91,15 +142,29 @@ body{
     box-shadow:0 0 25px rgba(255,255,255,0.15);
 }
 
+/* SCROLLBAR */
+
+.letter::-webkit-scrollbar{
+    width:5px;
+}
+
+.letter::-webkit-scrollbar-thumb{
+    background:#ffd6ff;
+    border-radius:10px;
+}
+
 .letter h1{
     text-align:center;
     margin-bottom:20px;
-    color:#ffd6ff;
+    color:#ffe5ff;
+    font-size:28px;
+    text-shadow:0 0 10px rgba(255,255,255,0.5);
 }
 
 .letter p{
-    line-height:1.8;
+    line-height:1.9;
     font-size:17px;
+    text-shadow:0 0 6px rgba(0,0,0,0.3);
 }
 
 /* OPEN EFFECT */
@@ -109,7 +174,7 @@ body{
 }
 
 .envelope.open .letter{
-    transform:translateY(-120px);
+    transform:translateY(-60px);
     opacity:1;
 }
 
@@ -117,21 +182,24 @@ body{
 
 .open-btn{
     position:absolute;
-    bottom:-70px;
+    bottom:-75px;
     left:50%;
     transform:translateX(-50%);
-    padding:12px 28px;
+    padding:14px 32px;
     border:none;
-    border-radius:40px;
-    background:#e0aaff;
-    color:#240046;
+    border-radius:50px;
+    background:white;
+    color:#5a189a;
     font-size:16px;
+    font-weight:bold;
     cursor:pointer;
     transition:0.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
 .open-btn:hover{
-    background:white;
+    transform:translateX(-50%) scale(1.08);
+    background:#ffe5ff;
 }
 
 /* SPARKLES */
@@ -148,9 +216,30 @@ body{
 @keyframes twinkle{
     from{
         opacity:0.2;
+        transform:scale(0.7);
     }
     to{
         opacity:1;
+        transform:scale(1.2);
+    }
+}
+
+/* HEARTS */
+
+.heart{
+    position:absolute;
+    color:#ffd6ff;
+    font-size:18px;
+    animation:hearts 6s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes hearts{
+    0%{
+        transform:translateY(100vh) scale(0.5);
+    }
+    100%{
+        transform:translateY(-120vh) scale(1.2);
     }
 }
 
@@ -158,6 +247,8 @@ body{
 </head>
 
 <body>
+
+<div class="glow"></div>
 
 <!-- FLOWERS -->
 
@@ -167,6 +258,12 @@ body{
 <div class="flower" style="left:50%; animation-duration:15s;">💮</div>
 <div class="flower" style="left:70%; animation-duration:12s;">🌷</div>
 <div class="flower" style="left:90%; animation-duration:11s;">💐</div>
+
+<!-- HEARTS -->
+
+<div class="heart" style="left:15%; animation-duration:7s;">💜</div>
+<div class="heart" style="left:40%; animation-duration:9s;">💖</div>
+<div class="heart" style="left:75%; animation-duration:8s;">💜</div>
 
 <!-- SPARKLES -->
 
@@ -223,4 +320,4 @@ function openLetter(){
 </script>
 
 </body>
-</html
+</html>
